@@ -2,18 +2,21 @@ package in.raveesh.labeledfab;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IntDef;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.StringRes;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-/**
- * Created by Raveesh on 07/10/16.
- */
 
 public class LabeledFab extends RelativeLayout {
     @IntDef({Position.LEFT, Position.TOP, Position.RIGHT, Position.BOTTOM})
@@ -28,10 +31,12 @@ public class LabeledFab extends RelativeLayout {
     private String label;
     private float labelMargin;
     private float labelPadding;
+    private int backgroundColor;
     @DrawableRes private int icon;
 
     private TextView text;
     private FloatingActionButton fab;
+    private CardView labelContainer;
 
     public LabeledFab(Context context) {
         super(context);
@@ -49,6 +54,7 @@ public class LabeledFab extends RelativeLayout {
             labelMargin = a.getDimension(R.styleable.LabeledFab_labelMargin, getResources().getDimension(R.dimen.default_label_margin));
             labelPadding = a.getDimension(R.styleable.LabeledFab_labelPadding, getResources().getDimension(R.dimen.default_label_padding));
             icon = a.getResourceId(R.styleable.LabeledFab_labelIcon, -1);
+            backgroundColor = a.getColor(R.styleable.LabeledFab_backgroundColor, -1);
             label = a.getString(R.styleable.LabeledFab_labelText);
             if (label == null){
                 label = getContentDescription().toString();
@@ -61,9 +67,16 @@ public class LabeledFab extends RelativeLayout {
 
     private void inflate(){
         LayoutInflater.from(getContext()).inflate(getLayout(), this, true);
-        text = (TextView) findViewById(R.id.text);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setImageResource(icon);
+        text = (TextView) findViewById(R.id.labeledFab_container_textView);
+        labelContainer = (CardView) findViewById(R.id.labeledFab_container_cardView);
+        fab = (FloatingActionButton) findViewById(R.id.labeledFab_container_floatingActionButton);
+        if (icon != -1) {
+            fab.setImageResource(icon);
+        }
+
+        if (backgroundColor != -1){
+            fab.setBackgroundColor(backgroundColor);
+        }
         fab.setContentDescription(label);
         text.setText(label);
     }
@@ -76,5 +89,40 @@ public class LabeledFab extends RelativeLayout {
             case Position.LEFT:
             default:return R.layout.labeled_fab_left;
         }
+    }
+
+    public void hideLabel(){
+        labelContainer.setVisibility(View.GONE);
+    }
+
+    public void showLabel() {
+        labelContainer.setVisibility(View.VISIBLE);
+    }
+
+    public void setFabImageResouce(@DrawableRes int icon) {
+        this.icon = icon;
+        fab.setImageResource(icon);
+    }
+
+    public void setFabImageDrawable(Drawable drawable){
+        fab.setImageDrawable(drawable);
+    }
+
+    public void setFabBackgroundColorResource(@ColorRes int color){
+        backgroundColor = ContextCompat.getColor(getContext(), color);
+        fab.setBackgroundColor(backgroundColor);
+    }
+
+    public void setFabBackgroundColor(@ColorInt int color){
+        backgroundColor = color;
+        fab.setBackgroundColor(color);
+    }
+
+    public void setLabelText(@StringRes int text){
+        this.text.setText(text);
+    }
+
+    public void setLabelText(String text){
+        this.text.setText(text);
     }
 }

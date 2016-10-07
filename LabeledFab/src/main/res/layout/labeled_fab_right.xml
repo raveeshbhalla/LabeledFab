@@ -4,26 +4,27 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" tools:ignore="RtlHardcoded">
+                android:animateLayoutChanges="true" android:orientation="vertical"
+                tools:ignore="RtlHardcoded">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/label"
+        android:id="@+id/labeledFab_container_cardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/default_label_margin"
-        android:layout_toRightOf="@+id/fab"
+        android:layout_toRightOf="@+id/labeledFab_container_floatingActionButton"
         android:padding="@dimen/default_label_padding">
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/labeledFab_container_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Label"
+            android:ellipsize="end"
             android:maxLines="1"
-            android:ellipsize="end"/>
+            tools:text="Label"/>
     </android.support.v7.widget.CardView>
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/labeledFab_container_floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
