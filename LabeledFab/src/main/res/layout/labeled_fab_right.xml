@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/default_label_margin"
-        android:layout_toRightOf="@+id/labeledFab_container_floatingActionButton"
-        android:padding="@dimen/default_label_padding">
+        android:layout_toRightOf="@+id/labeledFab_container_floatingActionButton">
         <TextView
             android:id="@+id/labeledFab_container_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
+            android:padding="@dimen/default_label_padding"
             tools:text="Label"/>
     </android.support.v7.widget.CardView>
     <android.support.design.widget.FloatingActionButton
