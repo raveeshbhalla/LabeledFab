@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-android:orientation="vertical">
+                android:layout_height="match_parent">
     <in.raveesh.labeledfab.LabeledFab
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tooltipSide="left"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         app:labelIcon="@mipmap/ic_launcher"
-        app:labelText="@string/app_name"/>
+        app:labelText="@string/app_name"
+        app:tooltipSide="left"/>
     <in.raveesh.labeledfab.LabeledFab
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tooltipSide="top"
+        android:layout_centerVertical="true"
         app:labelIcon="@mipmap/ic_launcher"
-        app:labelText="@string/app_name"/>
+        app:labelText="@string/app_name"
+        app:tooltipSide="right"/>
     <in.raveesh.labeledfab.LabeledFab
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tooltipSide="right"
         app:labelIcon="@mipmap/ic_launcher"
-        app:labelText="@string/app_name"/>
+        app:labelText="@string/app_name"
+        app:tooltipSide="bottom"/>
     <in.raveesh.labeledfab.LabeledFab
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tooltipSide="bottom"
-        app:labelIcon="@mipmap/ic_launcher"
-        app:labelText="@string/app_name"/>
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        app:labelIcon="@mipmap/ic_launcher" app:labelText="@string/app_name"
+        app:tooltipSide="top"/>
+</RelativeLayout>

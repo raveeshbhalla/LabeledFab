@@ -27,6 +27,8 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         app:fabSize="auto"
-        tools:src="@android:drawable/ic_menu_search"/>
+        tools:src="@android:drawable/ic_menu_search"
+        android:maxLines="1"
+        android:ellipsize="end"/>
 
 </RelativeLayout>
