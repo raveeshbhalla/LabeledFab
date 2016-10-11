@@ -3,7 +3,6 @@ package in.raveesh.labeledfab;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IntDef;
@@ -54,7 +53,7 @@ public class LabeledFab extends RelativeLayout {
             labelMargin = a.getDimension(R.styleable.LabeledFab_labelMargin, getResources().getDimension(R.dimen.default_label_margin));
             labelPadding = a.getDimension(R.styleable.LabeledFab_labelPadding, getResources().getDimension(R.dimen.default_label_padding));
             icon = a.getResourceId(R.styleable.LabeledFab_labelIcon, -1);
-            backgroundColor = a.getColor(R.styleable.LabeledFab_backgroundColor, -1);
+            backgroundColor = a.getResourceId(R.styleable.LabeledFab_backgroundColor, -1);
             label = a.getString(R.styleable.LabeledFab_labelText);
             if (label == null){
                 label = getContentDescription().toString();
@@ -75,7 +74,7 @@ public class LabeledFab extends RelativeLayout {
         }
 
         if (backgroundColor != -1){
-            fab.setBackgroundColor(backgroundColor);
+            setFabBackgroundColorResource(backgroundColor);
         }
         fab.setContentDescription(label);
         text.setText(label);
@@ -109,13 +108,7 @@ public class LabeledFab extends RelativeLayout {
     }
 
     public void setFabBackgroundColorResource(@ColorRes int color){
-        backgroundColor = ContextCompat.getColor(getContext(), color);
-        fab.setBackgroundColor(backgroundColor);
-    }
-
-    public void setFabBackgroundColor(@ColorInt int color){
-        backgroundColor = color;
-        fab.setBackgroundColor(color);
+        fab.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), color));
     }
 
     public void setLabelText(@StringRes int text){

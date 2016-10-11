@@ -25,11 +25,8 @@
         android:id="@+id/labeledFab_container_floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
         app:fabSize="auto"
         tools:src="@android:drawable/ic_menu_search"
-        android:maxLines="1"
-        android:ellipsize="end"/>
+        android:layout_alignParentTop="true"/>
 
 </RelativeLayout>
